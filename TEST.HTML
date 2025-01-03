@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SevapDünyası</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f0f4f8;
+            overflow-x: hidden;
+        }
+
+        .header {
+            background: #6d5dfc;
+            padding: 30px 0;
+            color: white;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1,
+        h2 {
+            color: #333;
+        }
+
+        .projects {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .project {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 48%;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .project:hover {
+            transform: scale(1.05);
+        }
+
+        .parallax {
+            background-image: url('https://via.placeholder.com/1500x600');
+            height: 400px;
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 3rem;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+        }
+
+        .footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .scroll-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #6d5dfc;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: none;
+        }
+
+        /* Yeni içerik bölümleri */
+        .extra-content {
+            background: #e0e5ec;
+            padding: 40px 20px;
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .extra-content h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .extra-content p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        @media (max-width: 768px) {
+            .projects {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .project {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="header">
+        <h1>Sevap Dünyasına Hoşgeldiniz</h1>
+    </header>
+
+    <section class="container">
+        <h2>Sevap Hakkında Bilgiler</h2>
+        <div class="projects">
+            <div class="project">
+                <h3>Sevap Nedir?</h3>
+                <p>Sevap, İslam'da Allah'ın rızasını kazanmak amacıyla yapılan iyi ve hayırlı amellerin karşılığında
+                    elde edilen manevi ödüldür. Sevap, ibadetler, yardımlar, doğru davranışlar ve hayırlı işler sonucu
+                    kazanılır. Bu ameller, Allah katında değer kazanmayı ve ahirette mükafatı artırmayı sağlar. Sevap
+                    kazanmak, hem dünya hem de ahiret için huzur ve fayda sağlar.
+                </p>
+            </div>
+            <div class="project">
+                <h3>Sevap Naıl İşlenir?</h3>
+                <p>Sevap işlemek için şu adımları izleyebilirsin:<br>
+                    1.<strong>İyi niyetle ibadet et:</strong> Namaz kıl, oruç tut, zekat ver, dua et.<br>
+                    2.<strong>Başkalarına yardım et:</strong> Yoksullara, muhtaçlara yardım et, çevrendeki insanlara
+                    iyilik yap.<br>
+                    3.<strong>Doğruyu söyle:</strong> Yalan söylemekten kaçın, dürüst ve güvenilir ol.<br>
+                    4.<strong>Allah’a şükret:</strong> Her nimete şükret, sabırlı ve minnettar ol.<br>
+                    5.<strong>Güzel davranışlar sergile:</strong> Ailene, arkadaşlarına ve diğer insanlara nazik ve
+                    saygılı ol.<br>
+                    6.<strong>Hayır işlerine katıl:</strong> İhtiyaç sahiplerine yardım eden organizasyonlara destek
+                    ver, hayırlı işlerde yer al.
+                </p>
+            </div>
+        </div>
+        <div class="project">
+        <h1>Sevap Günlüğü</h1>
+        <p>Bugün ne yaptığını işaretle!</p>
+
+        <ul class="task-list">
+            <li class="task"><input type="checkbox" id="task1"> Namaz kıl</li>
+            <li class="task"><input type="checkbox" id="task2"> Zekat ver</li>
+            <li class="task"><input type="checkbox" id="task3"> Yoksula yardım et</li>
+            <li class="task"><input type="checkbox" id="task4"> Doğruyu söyle</li>
+            <li class="task"><input type="checkbox" id="task5"> İyi davran</li>
+        </ul>
+
+        <div class="points">Puan: <span id="score">0</span></div>
+
+        <div id="fireworks" class="fireworks">🎆🎇</div>
+        <div>Bu Puanlarla Arkadaşlarınla Birlikte Kapışma Gibi Oyun Oynayabilirsin Aman Tartışmayın Yeter:</div>
+        </div>
+        <script>
+            const tasks = document.querySelectorAll('.task input');
+            const scoreElement = document.getElementById('score');
+            const fireworks = document.getElementById('fireworks');
+            let score = 0;
+
+            // Günün tarihini al
+            const today = new Date().toDateString();
+
+            // Eğer önceki kayıtlara sahipsen onları sıfırla
+            if (localStorage.getItem('lastVisitedDate') !== today) {
+                localStorage.setItem('lastVisitedDate', today);
+                tasks.forEach(task => task.checked = false);  // Bugün için tüm işaretlemeleri sıfırla
+                score = 0;  // Puanı sıfırla
+                scoreElement.textContent = score;
+            }
+
+            tasks.forEach(task => {
+                task.addEventListener('change', (e) => {
+                    if (e.target.checked) {
+                        score += 10; // +10 sevap puanı
+                        scoreElement.textContent = score;
+                        fireworks.style.display = 'block';
+                        setTimeout(() => fireworks.style.display = 'none', 1500); // Havai fişek efekti
+                    } else {
+                        score -= 10; // Eğer işaretlemeyi kaldırırsan puan düşer
+                        scoreElement.textContent = score;
+                    }
+                });
+            });
+        </script>
+        <hr>
+        <!-- Yeni eklenen içerik -->
+        <section class="extra-content">
+            <h3>Son Güncellenenler</h3>
+            <p>Sevapla Alakalı Şeyler Eklendi</p>
+        </section>
+
+        <section class="extra-content">
+            <h3>Bilgiler</h3>
+            <p>Müsait Olduğumuz Her Zaman Site İle Uğraşmaya Çalışıyoruz.Ama Sürekli Değişiklik Yapamayız.</p>
+        </section>
+    </section>
+    <section class="parallax">
+    <h1 id="greeting"></h1>
+    </section>
+  <script>
+    function getGreeting() {
+      const now = new Date();
+      const hour = now.getHours(); // Saat bilgisini al
+
+      let message = '';
+
+      if (hour >= 6 && hour < 12) {
+        message = 'Günaydın';
+      } else if (hour >= 12 && hour < 18) {
+        message = 'Tünaydın';
+      } else {
+        message = 'İyi Akşamlar';
+      }
+
+      return message;
+    }
+
+    document.getElementById('greeting').textContent = getGreeting();
+  </script>
+
+    <footer class="footer">
+        <p>&copy; 2025 SevapDünyası. Tüm hakları saklıdır.</p>
+    </footer>
+
+    <script>
+        // Scroll to top button visibility
+        window.onscroll = function () {
+            var scrollBtn = document.querySelector('.scroll-to-top');
+            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                scrollBtn.style.display = 'block';
+            } else {
+                scrollBtn.style.display = 'none';
+            }
+        };
+
+        // Scroll to top functionality
+        function scrollToTop() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+    </script>
+
+</body>
+
+</html>
