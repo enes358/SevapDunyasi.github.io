@@ -1,0 +1,1 @@
+sevap işlemek sitersen katıl
